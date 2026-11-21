@@ -1,0 +1,9 @@
+/dist/
+/apps/web/node_modules/
+/apps/web/dist/
+/internal/webui/dist/
+.DS_Store
+*.log
+.env
+.env.*
+!.env.example

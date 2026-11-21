@@ -1,0 +1,19 @@
+[Unit]
+Description=Home portal
+After=network.target homehub-api.service
+
+[Service]
+Type=simple
+User=home-portal
+Group=home-portal
+ExecStart=/opt/home-portal/current/home-portal-linux-amd64 serve --listen 127.0.0.1:8082 --homehub-url http://127.0.0.1:8081
+Restart=on-failure
+RestartSec=5s
+TimeoutStopSec=10s
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
