@@ -1,0 +1,24 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /apps/web
+    ignore:
+      # Keep vue-tsc compatible with typescript/lib/tsc, matching kintai-kanri.
+      - dependency-name: typescript
+        versions: [">=7.0.0 <8.0.0"]
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+  - package-ecosystem: gomod
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7

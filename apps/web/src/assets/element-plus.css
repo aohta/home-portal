@@ -1,0 +1,38 @@
+:root {
+  --el-font-family: var(--font-family-sans);
+  --el-font-size-base: 1rem;
+  --el-font-size-small: 0.875rem;
+  --el-color-primary: var(--color-action-primary);
+  --el-color-primary-dark-2: var(--color-action-primary-hover);
+  --el-color-primary-light-3: var(--color-action-primary-hover);
+  --el-color-primary-light-5: var(--color-border-muted);
+  --el-color-primary-light-7: var(--color-bg-selected);
+  --el-color-primary-light-8: var(--color-bg-selected);
+  --el-color-primary-light-9: var(--color-bg-selected);
+  --el-color-success: var(--color-status-success);
+  --el-color-warning: var(--color-status-warning);
+  --el-color-danger: var(--color-status-error);
+  --el-color-danger-light-9: var(--color-status-error-bg);
+  --el-color-info: var(--color-text-secondary);
+  --el-color-info-light-9: var(--color-status-info-bg);
+  --el-text-color-primary: var(--color-text-primary);
+  --el-text-color-regular: var(--color-text-primary);
+  --el-text-color-secondary: var(--color-text-secondary);
+  --el-text-color-placeholder: var(--color-text-disabled);
+  --el-border-color: var(--color-border-default);
+  --el-border-color-light: var(--color-border-muted);
+  --el-fill-color-blank: var(--color-bg-surface);
+  --el-fill-color-light: var(--color-bg-muted);
+  --el-bg-color: var(--color-bg-surface);
+  --el-border-radius-base: var(--radius-control);
+}
+.el-button { height: auto; min-height: 3rem; font-size: 1rem; font-weight: 700; white-space: normal; }
+.el-button > span { min-width: 0; }
+.el-button:focus-visible { outline: 0.25rem solid var(--color-black); outline-offset: 0.125rem; box-shadow: 0 0 0 0.125rem var(--color-focus-halo); }
+.portal-surface { border-color: var(--color-border-muted); border-radius: var(--radius-card); box-shadow: none; }
+.portal-surface > .el-card__body { padding: var(--space-4); }
+.el-alert { margin-top: var(--space-3); color: var(--color-text-primary); font-size: 1rem; }
+.el-alert__content, .el-alert__title { min-width: 0; font-size: 1rem; line-height: 1.7; overflow-wrap: anywhere; }
+.el-alert--error.is-light { border: 1px solid var(--color-status-error); color: var(--color-text-primary); background: var(--color-status-error-bg); }
+@media (max-width: 48rem) { .portal-surface > .el-card__body { padding: var(--space-3); } }
+@media (forced-colors: active) { .el-button:focus-visible { outline-color: CanvasText; box-shadow: none; } }

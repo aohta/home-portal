@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  go-web:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Setup Go
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version-file: go.mod
+          cache: false
+      - name: Setup Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: apps/web/package-lock.json
+      - name: Setup npm with release-age support
+        run: npm install --global --ignore-scripts npm@11.21.0
+      - name: Install frontend dependencies
+        run: npm ci --ignore-scripts
+        working-directory: apps/web
+      - name: Test Go and Vue, analyze code and verify standalone binary
+        run: make test check integration
+      - name: Verify Linux amd64 build
+        run: GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -trimpath -tags embedded -o dist/home-portal-linux-amd64 ./cmd/home-portal
